@@ -48,32 +48,39 @@
 }
 
 - (void)proximityKit:(PKManager *)manager didEnter:(PKRegion *)region {
-    NSArray *overlays = [self.pkManager.kit valueForKeyPath:kMapOverlayKeyPath];
-    
-    CLLocation *deviceLocation = [[self.pkManager locationManager] location];
+    [self checkForGeofenceRegions:manager];
+}
 
-    for (PKCircle *aMap in overlays) {
-        CGFloat latitude = aMap.latitude;
-        CGFloat longtitude = aMap.longitude;
-        CGFloat radius = aMap.radius + 3.000000;
+- (void)checkForGeofenceRegions:(PKManager *)manager {
+    @synchronized (self) {
+        CLLocation *deviceLocation = [[manager locationManager] location];
+        
+        [[manager.kit valueForKeyPath:kMapOverlayKeyPath] enumerateObjectsUsingBlock:^(id iObject, NSUInteger iIndex, BOOL *iStop) {
+            PKCircle *aMap = (PKCircle *)iObject;
+            
+            CGFloat latitude = aMap.latitude;
+            CGFloat longtitude = aMap.longitude;
+            CGFloat radius = aMap.radius + 3.000000;
+            
+            CLCircularRegion *aRegion = [[CLCircularRegion alloc] initWithCenter:CLLocationCoordinate2DMake(latitude, longtitude) radius:radius identifier:aMap.identifier];
+            
+            if ([aRegion containsCoordinate:CLLocationCoordinate2DMake(deviceLocation.coordinate.latitude, deviceLocation.coordinate.longitude)]) {
                 
-        CLCircularRegion *aRegion = [[CLCircularRegion alloc] initWithCenter:CLLocationCoordinate2DMake(latitude, longtitude) radius:radius identifier:aMap.identifier];
-
-        if ([aRegion containsCoordinate:CLLocationCoordinate2DMake(deviceLocation.coordinate.latitude, deviceLocation.coordinate.longitude)]) {
-            
-            UILocalNotification *notification = [[UILocalNotification alloc] init];
-            notification.alertBody = kNtfnMsg;
-            notification.soundName = UILocalNotificationDefaultSoundName;
-            [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
-            
-            NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-            [userInfo setValue:aMap.name forKeyPath:kBuidlingNumber];
-            [userInfo setValue:[NSString stringWithFormat:@"%f", latitude] forKeyPath:kLatitude];
-            [userInfo setValue:[NSString stringWithFormat:@"%f", longtitude] forKeyPath:kLongtitude];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNtfn object:nil userInfo:userInfo];
-            break;
-        }
+                UILocalNotification *notification = [[UILocalNotification alloc] init];
+                notification.alertBody = kNtfnMsg;
+                notification.soundName = UILocalNotificationDefaultSoundName;
+                [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+                
+                NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+                [userInfo setValue:aMap.name forKeyPath:kBuidlingNumber];
+                [userInfo setValue:[NSString stringWithFormat:@"%f", latitude] forKeyPath:kLatitude];
+                [userInfo setValue:[NSString stringWithFormat:@"%f", longtitude] forKeyPath:kLongtitude];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNtfn object:nil userInfo:userInfo];
+                iStop = false;
+                return;
+            }
+        }];
     }
 }
 
