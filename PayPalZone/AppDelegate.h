@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ProximityKit/ProximityKit.h>
+#import <ProximityKit/PKCircle.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, PKManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) PKManager *pkManager;
 
 @end

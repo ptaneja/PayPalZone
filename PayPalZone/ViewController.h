@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface ViewController : UIViewController
+
+@property (nonatomic, strong) IBOutlet UILabel *label;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
+- (IBAction)changeMapViewType:(id)sender;
 
 @end

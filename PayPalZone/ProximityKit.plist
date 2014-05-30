@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PKKitName</key>
+	<string>PayPal</string>
+	<key>PKUserIdentifier</key>
+	<string>2781</string>
+	<key>PKUserEmail</key>
+	<string>pankajtaneja86@gmail.com</string>
+	<key>PKGlobalUserIdentifier</key>
+	<string>4086</string>
+	<key>PKAPIToken</key>
+	<string>69691d9a81270399d7af8fb4b7ebbc8e3bb8b356fd4f08ce11e1265fa51c0f94</string>
+	<key>PKKitURL</key>
+	<string>http://proximitykit.com/api/kits/2529</string>
+	<key>PKMapURL</key>
+	<string>http://proximitykit.com/api/maps/737</string>
+	<key>PKMapName</key>
+	<string>PayPalZone</string>
+</dict>
+</plist>

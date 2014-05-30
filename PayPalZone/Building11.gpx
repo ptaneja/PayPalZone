@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="Xcode">
+    
+    <wpt lat="33.575397" lon="-111.886364">
+        <name>IHOP</name>
+	</wpt>
+    <wpt lat="33.575500" lon="-111.885382">
+        <name>Desert PLastic Surgery</name>
+	</wpt>
+    <wpt lat="33.575961" lon="-111.885194">
+        <name>BeforePayPal</name>
+	</wpt>
+    <wpt lat="33.576377" lon="-111.885125">
+        <name>PayPalBuilding11</name>
+	</wpt>
+    <wpt lat="33.5759789" lon="-111.889263">
+        <name>ExitZone</name>
+	</wpt>
+</gpx>

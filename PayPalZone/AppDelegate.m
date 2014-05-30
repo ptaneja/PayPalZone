@@ -7,40 +7,88 @@
 //
 
 #import "AppDelegate.h"
+#import "Constants.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    
+    self.pkManager = [PKManager managerWithDelegate:self];
+    [self.pkManager start];
     return YES;
 }
-							
-- (void)applicationWillResignActive:(UIApplication *)application
+
+-(void) applicationDidBecomeActive:(UIApplication *) application
 {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [self.pkManager.locationManager stopMonitoringSignificantLocationChanges];
+    for (PKCircle *aCircle in self.pkManager.kit.map.overlays) {
+        [self.pkManager.locationManager stopMonitoringForRegion:aCircle.region];
+    }
+    
+    [self.pkManager.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [self.pkManager start];
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
+-(void) applicationDidEnterBackground:(UIApplication *) application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    for (PKCircle *aCircle in self.pkManager.kit.map.overlays) {
+        [aCircle.region setNotifyOnEntry:YES];
+        [aCircle.region setNotifyOnExit:YES];
+        [self.pkManager.locationManager startMonitoringForRegion:aCircle.region];
+    }
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+- (void)applicationWillTerminate:(UIApplication *)application {
+    for (PKCircle *aCircle in self.pkManager.kit.map.overlays) {
+        [aCircle.region setNotifyOnEntry:YES];
+        [aCircle.region setNotifyOnExit:YES];
+        [self.pkManager.locationManager startMonitoringForRegion:aCircle.region];
+    }
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+- (void)proximityKit:(PKManager *)manager didEnter:(PKRegion *)region {
+    NSArray *overlays = [self.pkManager.kit valueForKeyPath:kMapOverlayKeyPath];
+    
+    CLLocation *deviceLocation = [[self.pkManager locationManager] location];
+
+    for (PKCircle *aMap in overlays) {
+        CGFloat latitude = aMap.latitude;
+        CGFloat longtitude = aMap.longitude;
+        CGFloat radius = aMap.radius + 3.000000;
+                
+        CLCircularRegion *aRegion = [[CLCircularRegion alloc] initWithCenter:CLLocationCoordinate2DMake(latitude, longtitude) radius:radius identifier:aMap.identifier];
+
+        if ([aRegion containsCoordinate:CLLocationCoordinate2DMake(deviceLocation.coordinate.latitude, deviceLocation.coordinate.longitude)]) {
+            
+            UILocalNotification *notification = [[UILocalNotification alloc] init];
+            notification.alertBody = kNtfnMsg;
+            notification.soundName = UILocalNotificationDefaultSoundName;
+            [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+            
+            NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+            [userInfo setValue:aMap.name forKeyPath:kBuidlingNumber];
+            [userInfo setValue:[NSString stringWithFormat:@"%f", latitude] forKeyPath:kLatitude];
+            [userInfo setValue:[NSString stringWithFormat:@"%f", longtitude] forKeyPath:kLongtitude];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLocationUpdateNtfn object:nil userInfo:userInfo];
+            break;
+        }
+    }
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+- (void)proximityKit:(PKManager *)manager didExit:(PKRegion *)region {
+}
+
+- (void) proximityKit:(PKManager *)manager
+    didDetermineState:(PKRegionState)state
+            forRegion:(PKRegion *)region {
+}
+
+
+- (void)proximityKit:(PKManager *)manager
+    didFailWithError:(NSError *)error {
+    NSLog(@"Error while monitoring");
 }
 
 @end

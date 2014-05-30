@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A05F5FD1937D027009853FA /* Location.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6A05F5FC1937D027009853FA /* Location.gpx */; };
+		6A05F5FF1937D1D9009853FA /* Building11.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6A05F5FE1937D1D9009853FA /* Building11.gpx */; };
+		6A05F6001937D1D9009853FA /* Building11.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 6A05F5FE1937D1D9009853FA /* Building11.gpx */; };
+		6A05F6021937EC2C009853FA /* ProximityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A05F6011937EC2C009853FA /* ProximityKit.framework */; };
+		6A05F6041937EC35009853FA /* ProximityKit.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A05F6031937EC35009853FA /* ProximityKit.plist */; };
+		6A56A2841938A45000E4A049 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A56A2831938A45000E4A049 /* CoreLocation.framework */; };
+		6A7E93311938D48F009C6C8C /* Screen Shot 2014-05-30 at 10.49.12 AM.png in Resources */ = {isa = PBXBuildFile; fileRef = 6A7E93301938D48F009C6C8C /* Screen Shot 2014-05-30 at 10.49.12 AM.png */; };
+		6AA7059D1936EE29008435EF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AA7059C1936EE29008435EF /* MapKit.framework */; };
 		6AFE50AF19368865006788B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFE50AE19368865006788B9 /* Foundation.framework */; };
 		6AFE50B119368865006788B9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFE50B019368865006788B9 /* CoreGraphics.framework */; };
 		6AFE50B319368865006788B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFE50B219368865006788B9 /* UIKit.framework */; };
@@ -34,6 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6A05F5FC1937D027009853FA /* Location.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Location.gpx; path = ../Location.gpx; sourceTree = "<group>"; };
+		6A05F5FE1937D1D9009853FA /* Building11.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Building11.gpx; sourceTree = "<group>"; };
+		6A05F6011937EC2C009853FA /* ProximityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ProximityKit.framework; sourceTree = "<group>"; };
+		6A05F6031937EC35009853FA /* ProximityKit.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ProximityKit.plist; sourceTree = "<group>"; };
+		6A56A2831938A45000E4A049 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6A7E93301938D48F009C6C8C /* Screen Shot 2014-05-30 at 10.49.12 AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2014-05-30 at 10.49.12 AM.png"; sourceTree = "<group>"; };
+		6AA7059C1936EE29008435EF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6AE24A3A1938CCA90047A69E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		6AFE50AB19368865006788B9 /* PayPalZone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PayPalZone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AFE50AE19368865006788B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6AFE50B019368865006788B9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,6 +76,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A56A2841938A45000E4A049 /* CoreLocation.framework in Frameworks */,
+				6AA7059D1936EE29008435EF /* MapKit.framework in Frameworks */,
+				6A05F6021937EC2C009853FA /* ProximityKit.framework in Frameworks */,
 				6AFE50B119368865006788B9 /* CoreGraphics.framework in Frameworks */,
 				6AFE50B319368865006788B9 /* UIKit.framework in Frameworks */,
 				6AFE50AF19368865006788B9 /* Foundation.framework in Frameworks */,
@@ -101,6 +120,9 @@
 		6AFE50AD19368865006788B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A56A2831938A45000E4A049 /* CoreLocation.framework */,
+				6A05F6011937EC2C009853FA /* ProximityKit.framework */,
+				6AA7059C1936EE29008435EF /* MapKit.framework */,
 				6AFE50AE19368865006788B9 /* Foundation.framework */,
 				6AFE50B019368865006788B9 /* CoreGraphics.framework */,
 				6AFE50B219368865006788B9 /* UIKit.framework */,
@@ -117,6 +139,7 @@
 				6AFE50C019368865006788B9 /* Main.storyboard */,
 				6AFE50C319368865006788B9 /* ViewController.h */,
 				6AFE50C419368865006788B9 /* ViewController.m */,
+				6AE24A3A1938CCA90047A69E /* Constants.h */,
 				6AFE50C619368865006788B9 /* Images.xcassets */,
 				6AFE50B519368865006788B9 /* Supporting Files */,
 			);
@@ -126,10 +149,14 @@
 		6AFE50B519368865006788B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6A7E93301938D48F009C6C8C /* Screen Shot 2014-05-30 at 10.49.12 AM.png */,
+				6A05F6031937EC35009853FA /* ProximityKit.plist */,
+				6A05F5FC1937D027009853FA /* Location.gpx */,
 				6AFE50B619368865006788B9 /* PayPalZone-Info.plist */,
 				6AFE50B719368865006788B9 /* InfoPlist.strings */,
 				6AFE50BA19368865006788B9 /* main.m */,
 				6AFE50BC19368865006788B9 /* PayPalZone-Prefix.pch */,
+				6A05F5FE1937D1D9009853FA /* Building11.gpx */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -199,6 +226,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = TringApps;
 				TargetAttributes = {
+					6AFE50AA19368865006788B9 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					6AFE50CB19368865006788B9 = {
 						TestTargetID = 6AFE50AA19368865006788B9;
 					};
@@ -229,8 +263,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AFE50C719368865006788B9 /* Images.xcassets in Resources */,
+				6A05F5FD1937D027009853FA /* Location.gpx in Resources */,
+				6A7E93311938D48F009C6C8C /* Screen Shot 2014-05-30 at 10.49.12 AM.png in Resources */,
 				6AFE50B919368865006788B9 /* InfoPlist.strings in Resources */,
 				6AFE50C219368865006788B9 /* Main.storyboard in Resources */,
+				6A05F5FF1937D1D9009853FA /* Building11.gpx in Resources */,
+				6A05F6041937EC35009853FA /* ProximityKit.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AFE50D819368865006788B9 /* InfoPlist.strings in Resources */,
+				6A05F6001937D1D9009853FA /* Building11.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,9 +415,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PayPalZone/PayPalZone-Prefix.pch";
 				INFOPLIST_FILE = "PayPalZone/PayPalZone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -389,9 +433,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PayPalZone/PayPalZone-Prefix.pch";
 				INFOPLIST_FILE = "PayPalZone/PayPalZone-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -456,6 +505,7 @@
 				6AFE50DF19368865006788B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6AFE50E019368865006788B9 /* Build configuration list for PBXNativeTarget "PayPalZoneTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +514,7 @@
 				6AFE50E219368865006788B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
