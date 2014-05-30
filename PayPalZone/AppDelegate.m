@@ -13,7 +13,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
     self.pkManager = [PKManager managerWithDelegate:self];
     [self.pkManager start];
     return YES;
